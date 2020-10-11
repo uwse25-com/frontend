@@ -1,12 +1,18 @@
-import React from 'react';
-import './App.css';
-import CreateEvent from './components/Calendar/CreateEvent';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import CreateEvent from "./components/Calendar/CreateEvent";
+import DashboardLayout from "./layout/DashboardLayout";
 
 function App() {
   return (
-    <div className="calendar">
-      <CreateEvent />
-    </div>
+    <Router>
+      <Switch>
+        <DashboardLayout>
+          <Route component={CreateEvent} />
+        </DashboardLayout>
+      </Switch>
+    </Router>
   );
 }
 
