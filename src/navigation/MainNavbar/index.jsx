@@ -11,14 +11,14 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
   Container,
 } from "reactstrap";
 import "./styles.scss";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const MainNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { logout } = useAuth0();
   const toggle = () => setIsOpen(!isOpen);
 
   return (
@@ -46,7 +46,13 @@ const MainNavbar = (props) => {
                     <DropdownItem>Option 1</DropdownItem>
                     <DropdownItem>Option 2</DropdownItem>
                     <DropdownItem divider />
-                    <DropdownItem>Reset</DropdownItem>
+                    <DropdownItem
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
+                      Logout
+                    </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </NavItem>
