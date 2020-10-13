@@ -1,26 +1,21 @@
 import React from "react";
 import { DateTimePicker, MuiPickersUtilsProvider} from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import './styles.scss';
 
 function BasicDateTimePicker(props) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <DateTimePicker
-        label="Start Date"
+      <DateTimePicker className="date-time-picker"
+        name={props.name}
+        label={props.label}
         inputVariant="outlined"
-        value={props.startDate}
-        onChange={props.startDateChange}
-        showTodayButton
-      />
-    <DateTimePicker
-        label="End Date"
-        inputVariant="outlined"
-        value={props.endDate}
         disablePast
-        onChange={props.endDateChange}
+        value={props.value}
+        onChange={props.onChange}
         showTodayButton
-        minDate={props.startDate}
-    />
+        minDate={props.minDate}
+      />
     </MuiPickersUtilsProvider>
   );
 }
