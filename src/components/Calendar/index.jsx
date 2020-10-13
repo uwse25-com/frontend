@@ -20,21 +20,9 @@ const CreateEvent = () => {
   //Calendar State
   const [events, setEvents] = useState(_.cloneDeep(eventList));
   const [dayLayoutAlgorithm] = useState("no-overlap");
-  //Calendar Event State
-  const [taskStartDate, setTaskStartDate] = useState(new Date());
-  const [taskEndDate, setTaskEndDate] = useState(new Date());
-  const [taskProgress, setTaskProgress] = useState(null);
-  const [taskNote, setTaskNote] = useState(null);
+  
   //Modal State
   const [open, setOpen] = useState(false);
-
-  //Date State Changes
-  const handleStartDateChange = (date) => {
-    setTaskStartDate(date);
-  }
-  const handleEndDateChange = (date) => {
-    setTaskEndDate(date);
-  }
 
   //Modal State Changes
   const onClose = () => {
@@ -45,18 +33,21 @@ const CreateEvent = () => {
     setOpen(true);
   }
   const handleSelectSlot = ({ start, end }) => {
-    const title = window.prompt("New Event Name");
-    if (title) {
-      setEvents([
-        ...events,
-        {
-          start,
-          end,
-          title,
-        },
-      ]);
-    }
-  };
+    setOpen(true);
+    const title = window.prompt('New Event name')
+    if (title)
+      setEvents({
+        events: [
+          ...events,
+          {
+            start,
+            end,
+            title,
+          },
+        ],
+      })
+  }
+
   return (
     <>
       <DnDCalendar
@@ -73,11 +64,6 @@ const CreateEvent = () => {
       <Modal 
         open={open}
         onClose={onClose}
-        //Date Input
-        startDate={taskStartDate}
-        startDateChange={handleStartDateChange}
-        endDate={taskEndDate}
-        endDateChange={handleEndDateChange}
       />
     </>
   );
