@@ -48,7 +48,9 @@ const MainNavbar = (props) => {
                     <DropdownItem divider />
                     <DropdownItem
                       onClick={() => {
-                        logout();
+                        logout({
+                          returnTo: window.location.origin,
+                        });
                       }}
                     >
                       Logout
