@@ -1,5 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+# Prefer YARN instead of NPM
 ## Available Scripts
 
 In the project directory, you can run:
